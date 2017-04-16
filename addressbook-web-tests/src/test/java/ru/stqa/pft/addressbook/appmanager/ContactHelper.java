@@ -13,14 +13,6 @@ public class ContactHelper extends HelperBase{
         super(wd);
     }
 
-    public void returnToHomePage() {
-        click(By.linkText("home page"));
-    }
-
-    public void submitContactCreation() {
-        click(By.xpath("//div[@id='content']/form/input[21]"));
-    }
-
     public void fillNewContactForm(ContactData contactData) {
         type(By.name("firstname"),contactData.getFirstName());
         type(By.name("lastname"),contactData.getLastName());
@@ -32,9 +24,8 @@ public class ContactHelper extends HelperBase{
         type(By.name("email3"),contactData.getEmail3());
     }
 
-    public void deleteSelectedContacts() {
-        click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
-        wd.switchTo().alert().accept();
+    public void submitContactCreation() {
+        click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
     public void selectContact() {
@@ -47,5 +38,14 @@ public class ContactHelper extends HelperBase{
 
     public void submitContactModification() {
         click(By.name("update"));
+    }
+
+    public void deleteSelectedContacts() {
+        click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+        wd.switchTo().alert().accept();
+    }
+
+    public void returnToHomePage() {
+        click(By.linkText("home page"));
     }
 }
