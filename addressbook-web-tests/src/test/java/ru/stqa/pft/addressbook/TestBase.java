@@ -59,6 +59,37 @@ public class TestBase {
         wd.findElement(By.linkText("groups")).click();
     }
 
+    protected void returnToHomePage() {
+        wd.findElement(By.linkText("home page")).click();
+    }
+
+    protected void submitContactCreation() {
+        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    }
+
+    protected void fillNewContactForm(ContactData contactData) {
+        wd.findElement(By.name("firstname")).clear();
+        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+        wd.findElement(By.name("lastname")).clear();
+        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+        wd.findElement(By.name("address")).clear();
+        wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
+        wd.findElement(By.name("mobile")).clear();
+        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
+        wd.findElement(By.name("work")).clear();
+        wd.findElement(By.name("work")).sendKeys(contactData.getWorkPhone());
+        wd.findElement(By.name("email")).clear();
+        wd.findElement(By.name("email")).sendKeys(contactData.getEmail1());
+        wd.findElement(By.name("email2")).clear();
+        wd.findElement(By.name("email2")).sendKeys(contactData.getEmail2());
+        wd.findElement(By.name("email3")).clear();
+        wd.findElement(By.name("email3")).sendKeys(contactData.getEmail3());
+    }
+
+    protected void gotoAddNewPage() {
+        wd.findElement(By.linkText("add new")).click();
+    }
+
     private void login(String username, String password) {
         wd.get("http://localhost/addressbook/group.php");
         wd.findElement(By.name("user")).click();
@@ -81,5 +112,17 @@ public class TestBase {
 
     protected void selectGroup() {
         wd.findElement(By.name("selected[]")).click();
+    }
+
+    protected void gotoHomePage() {
+        wd.findElement(By.linkText("home")).click();
+    }
+
+    protected void deleteSelectedContacts() {
+        wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+    }
+
+    protected void selectContact() {
+        wd.findElement(By.id("10")).click();
     }
 }
