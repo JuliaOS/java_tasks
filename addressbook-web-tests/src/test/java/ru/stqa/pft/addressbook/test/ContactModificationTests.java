@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillNewContactForm(new ContactData("FName1", "LName1", "UserAddress1", "+79878888888", "88315555555", "fname1@yandex.ru", "fname1@yahoo.com", "fname1@gmail.com"));
+        app.getContactHelper().fillNewContactForm(new ContactData("FName", "LName1", "UserAddress", "+79878888888", "88315555555", "fname1@yandex.ru", "fname1@yahoo.com", "fname1@gmail.com"));
         app.getContactHelper().submitContactModification();
         app.getContactHelper().returnToHomePage();
     }
