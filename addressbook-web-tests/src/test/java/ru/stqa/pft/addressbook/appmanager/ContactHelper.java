@@ -2,9 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 /**
  * Created by Julia on 4/16/2017.
@@ -54,7 +52,6 @@ public class ContactHelper extends HelperBase{
     public void createContact(ContactData contactData) {
         fillNewContactForm(contactData);
         submitContactCreation();
-        returnToHomePage();
     }
 
     public boolean isThereAContact() {
