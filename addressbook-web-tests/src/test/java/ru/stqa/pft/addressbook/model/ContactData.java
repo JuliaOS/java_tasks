@@ -12,6 +12,19 @@ public class ContactData {
     private final String email3;
 
     public ContactData(String firstName, String lastName, String address, String mobilePhone, String workPhone, String email1, String email2, String email3) {
+        this.id = 0;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.mobilePhone = mobilePhone;
+        this.workPhone = workPhone;
+        this.email1 = email1;
+        this.email2 = email2;
+        this.email3 = email3;
+    }
+
+    public ContactData(int id, String firstName, String lastName, String address, String mobilePhone, String workPhone, String email1, String email2, String email3) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -44,6 +57,10 @@ public class ContactData {
         this.email1 = null;
         this.email2 = null;
         this.email3 = null;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -106,4 +123,5 @@ public class ContactData {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
 }
