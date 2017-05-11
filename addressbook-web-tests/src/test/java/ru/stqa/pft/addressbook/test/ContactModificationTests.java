@@ -18,9 +18,9 @@ public class ContactModificationTests extends TestBase {
         app.goTo().homePage();
         if( app.contact().list().size() == 0 ){
             app.goTo().addNewPage();
-            app.contact().create(new ContactData("FName", "LName", "UserAddress",
-                    "+79879999999", "88314444444",
-                    "fname@yandex.ru", null, "fname@gmail.com"));
+            app.contact().create(new ContactData()
+                    .withFirstName("FName1").withLastName("LName").withAddress("UserAddress").withMobilePhone("+79879999999")
+                    .withWorkPhone("88314444444").withEmail1("fname@yandex.ru").withEmail3("fname@gmail.com"));
             app.goTo().homePage();
         }
     }
@@ -29,9 +29,10 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification(){
         List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
-        ContactData newContact = new ContactData(before.get(index).getId(), "FName4", "LName4", "UserAddress",
-                "+79878888888", "88315555555",
-                "fname1@yandex.ru", "fname1@yahoo.com", "fname1@gmail.com");
+        ContactData newContact = new ContactData()
+                .withId(before.get(index).getId()).withFirstName("FName4").withLastName("LName4")
+                .withAddress("UserAddress").withMobilePhone("+79879999999").withWorkPhone("88314444444")
+                .withEmail1("fname@yandex.ru").withEmail3("fname@gmail.com");
         app.contact().modify(index, newContact);
         List<ContactData> after = app.contact().list();
 
