@@ -12,8 +12,7 @@ public class Groups extends ForwardingSet<GroupData> {
     private Set<GroupData> groupDelegate;
 
     public Groups(Groups groupSet) {
-        groupDelegate = groupSet.delegate();
-        //groupDelegate = new HashSet<GroupData>(groupSet.delegate());
+        groupDelegate = new HashSet<GroupData>(groupSet.delegate());
     }
 
     public Groups() {

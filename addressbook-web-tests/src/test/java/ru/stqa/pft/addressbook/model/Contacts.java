@@ -15,7 +15,7 @@ public class Contacts extends ForwardingSet<ContactData> {
     }
 
     public Contacts(Contacts contactSet) {
-        contactDelegate = contactSet.delegate();
+        contactDelegate = new HashSet<ContactData>(contactSet.delegate());
     }
 
     @Override
