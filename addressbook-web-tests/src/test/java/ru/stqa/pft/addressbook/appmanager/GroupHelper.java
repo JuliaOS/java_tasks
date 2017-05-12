@@ -11,6 +11,7 @@ import java.util.List;
  * Created by Julia on 4/16/2017.
  */
 public class GroupHelper extends HelperBase{
+    public Groups groupCache = null;
 
     public GroupHelper(WebDriver wd) {
         super(wd);
@@ -54,6 +55,7 @@ public class GroupHelper extends HelperBase{
         initGroupCreation();
         fillGroupForm(groupData);
         submitGroupCreation();
+        groupCache = null;
         returnToGroupPage();
     }
 
@@ -62,12 +64,14 @@ public class GroupHelper extends HelperBase{
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
+        groupCache = null;
         returnToGroupPage();
     }
 
     public void delete(GroupData group) {
         selectGroupById(group.getId());
         deleteSelectedGroups();
+        groupCache = null;
         returnToGroupPage();
     }
 
@@ -76,13 +80,16 @@ public class GroupHelper extends HelperBase{
     }
 
     public Groups all() {
+        if(groupCache != null){
+            return groupCache;
+        }
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-        Groups groupList = new Groups();
+        groupCache = new Groups();
         for(WebElement e : elements){
             String groupName = e.getText();
             int groupId = Integer.parseInt(e.findElement(By.tagName("input")).getAttribute("value"));
-            groupList.add(new GroupData().withId(groupId).withName(groupName));
+            groupCache.add(new GroupData().withId(groupId).withName(groupName));
         }
-        return groupList;
+        return groupCache;
     }
 }
