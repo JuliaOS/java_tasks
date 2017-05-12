@@ -79,6 +79,10 @@ public class GroupHelper extends HelperBase{
         return isElementPresent(By.name("selected[]"));
     }
 
+    public int count(){
+        return wd.findElements(By.cssSelector("span.group")).size();
+    }
+
     public Groups all() {
         if(groupCache != null){
             return groupCache;
