@@ -5,11 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Julia on 4/16/2017.
@@ -22,10 +18,6 @@ public class GroupHelper extends HelperBase{
 
     public void initGroupCreation() {
         click(By.name("new"));
-    }
-
-    public void selectGroup(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void selectGroupById(int id) {
@@ -65,25 +57,11 @@ public class GroupHelper extends HelperBase{
         returnToGroupPage();
     }
 
-    public void modify(int index, GroupData group) {
-        selectGroup(index);
-        initGroupModification();
-        fillGroupForm(group);
-        submitGroupModification();
-        returnToGroupPage();
-    }
-
     public void modify(GroupData group) {
         selectGroupById(group.getId());
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
-        returnToGroupPage();
-    }
-
-    public void delete(int index) {
-        selectGroup(index);
-        deleteSelectedGroups();
         returnToGroupPage();
     }
 
@@ -95,17 +73,6 @@ public class GroupHelper extends HelperBase{
 
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
-    }
-
-    public List<GroupData> list() {
-        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-        List<GroupData> groupList = new ArrayList<GroupData>();
-        for(WebElement e : elements){
-            String groupName = e.getText();
-            int groupId = Integer.parseInt(e.findElement(By.tagName("input")).getAttribute("value"));
-            groupList.add(new GroupData().withId(groupId).withName(groupName));
-        }
-        return groupList;
     }
 
     public Groups all() {
