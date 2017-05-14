@@ -12,7 +12,7 @@
     <orderEntry type="library" name="Gradle: org.testng:testng:6.11" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-java:2.53.1" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-junit:2.0.0.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.beust:jcommander:1.64" level="project" />
+    <orderEntry type="library" name="Gradle: com.beust:jcommander:1.69" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:2.53.1" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-edge-driver:2.53.1" level="project" />
