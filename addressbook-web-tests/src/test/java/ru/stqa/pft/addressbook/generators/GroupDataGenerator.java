@@ -5,7 +5,6 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,9 +20,9 @@ public class GroupDataGenerator {
     @Parameter(names = "-c", description = "Groups count")
     public int count;
     @Parameter(names = "-f", description = "Target file")
-    private String file = new String();
+    public String file = new String();
     @Parameter(names = "-d", description = "Data format")
-    private String format = new String();
+    public String format = new String();
 
     public static void main (String[] args) throws IOException {
         GroupDataGenerator generator = new GroupDataGenerator();

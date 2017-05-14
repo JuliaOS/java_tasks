@@ -10,5 +10,6 @@ dependencies{
     compile 'org.hamcrest:hamcrest-junit:2.0.0.0'
     compile 'com.beust:jcommander:1.69'
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
+    compile 'com.solidfire.code.gson:gson:2.6.2'
 }
 
