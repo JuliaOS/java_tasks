@@ -53,9 +53,9 @@ public class GroupDataGenerator {
         XStream xstream = new XStream();
         xstream.processAnnotations(GroupData.class);
         String xml = xstream.toXML(groups);
-        FileWriter writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+        try(FileWriter writer = new FileWriter(file)) {
+            writer.write(xml);
+        }
     }
 
     private List<GroupData> generateGroups(int count) {
@@ -70,10 +70,10 @@ public class GroupDataGenerator {
     }
 
     private void saveToCsv(List<GroupData> groups, File file) throws IOException {
-        FileWriter writer = new FileWriter(file);
-        for(GroupData group : groups){
-            writer.write(String.format("%s;%s;%s\n",group.getName(), group.getHeader(), group.getFooter() ));
+        try(FileWriter writer = new FileWriter(file)) {
+            for (GroupData group : groups) {
+                writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+            }
         }
-        writer.close();
     }
 }

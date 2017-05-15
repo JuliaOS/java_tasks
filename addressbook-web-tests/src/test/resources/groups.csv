@@ -1,32 +1,3 @@
-<list>
-  <ru.stqa.pft.addressbook.model.GroupData>
-    <id>0</id>
-    <name>name0</name>
-    <header>header0</header>
-    <footer>footer0</footer>
-  </ru.stqa.pft.addressbook.model.GroupData>
-  <ru.stqa.pft.addressbook.model.GroupData>
-    <id>0</id>
-    <name>name1</name>
-    <header>header1</header>
-    <footer>footer1</footer>
-  </ru.stqa.pft.addressbook.model.GroupData>
-  <ru.stqa.pft.addressbook.model.GroupData>
-    <id>0</id>
-    <name>name2</name>
-    <header>header2</header>
-    <footer>footer2</footer>
-  </ru.stqa.pft.addressbook.model.GroupData>
-  <ru.stqa.pft.addressbook.model.GroupData>
-    <id>0</id>
-    <name>name3</name>
-    <header>header3</header>
-    <footer>footer3</footer>
-  </ru.stqa.pft.addressbook.model.GroupData>
-  <ru.stqa.pft.addressbook.model.GroupData>
-    <id>0</id>
-    <name>name4</name>
-    <header>header4</header>
-    <footer>footer4</footer>
-  </ru.stqa.pft.addressbook.model.GroupData>
-</list>
+name0;header0;footer0
+name1;header1;footer1
+name2;header2;footer2

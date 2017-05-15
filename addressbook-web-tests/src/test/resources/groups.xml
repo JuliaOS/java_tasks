@@ -14,14 +14,4 @@
     <header>header2</header>
     <footer>footer2</footer>
   </group>
-  <group>
-    <name>name3</name>
-    <header>header3</header>
-    <footer>footer3</footer>
-  </group>
-  <group>
-    <name>name4</name>
-    <header>header4</header>
-    <footer>footer4</footer>
-  </group>
 </list>
