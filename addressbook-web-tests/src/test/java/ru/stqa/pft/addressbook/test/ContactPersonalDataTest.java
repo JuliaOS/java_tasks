@@ -32,15 +32,17 @@ public class ContactPersonalDataTest extends TestBase {
         Contacts contacts = app.contact().all();
         ContactData contactFromMainPage = contacts.iterator().next();
         ContactData contactFromPersonalInfo = app.contact().contactFromPersonalInfoPage(contactFromMainPage);
-        assertThat(mergePersonalInfo(contactFromMainPage), equalTo(cleanedData(contactFromPersonalInfo.getPersonalInfo())));
+        contactFromMainPage.withAllPhones(newSmth(contactFromMainPage));
+        //assertThat(mergePersonalInfo(contactFromMainPage), equalTo(cleanedData(contactFromPersonalInfo.getPersonalInfo())));
+        assertThat(mergePersonalInfo(contactFromMainPage), equalTo(contactFromPersonalInfo.getPersonalInfo().replaceAll("\n\n", "\n")));
     }
 
     private String mergePersonalInfo(ContactData contact) {
         String fullname = Arrays.asList(contact.getFirstName(), contact.getLastName())
                 .stream().filter((s) -> !s.equals(""))
-                .collect(Collectors.joining());
+                .collect(Collectors.joining(" "));
         return Arrays.asList(fullname,
-                contact.getAddress().replaceAll(" ", "").replaceAll("[-()]", ""),
+                contact.getAddress(),
                 contact.getAllPhones(), contact.getAllEmails())
                 .stream().filter((s) -> !s.equals(""))
                 .collect(Collectors.joining("\n"));
@@ -50,6 +52,36 @@ public class ContactPersonalDataTest extends TestBase {
         return data.replaceAll("[-()]", "")
                 .replaceAll("H: ","").replaceAll("M: ", "").replaceAll("W: ", "")
                 .replaceAll(" ", "").replaceAll("\n\n", "\n");
+    }
+
+    public String newSmth(ContactData contact){
+        app.goTo().homePage();
+        ContactData contactFromEditPage = app.contact().contactFromEditPage(contact);
+        String allPhones = Arrays.asList(contactFromEditPage.getHomePhone(), contactFromEditPage.getMobilePhone(), contactFromEditPage.getWorkPhone())
+                .stream().filter((s) -> !s.equals(""))
+                .map(ContactPhoneTest::cleaned)
+                .collect(Collectors.joining("\n"));
+        assertThat(allPhones, equalTo(contact.getAllPhones()));
+        String homePhone = "";
+        String mobilePhone = "";
+        String workPhone = "";
+        if(!contactFromEditPage.getHomePhone().equals("")){
+            homePhone = "H: " + contactFromEditPage.getHomePhone();
+        }
+        if(!contactFromEditPage.getMobilePhone().equals("")){
+            mobilePhone = "M: " + contactFromEditPage.getMobilePhone();
+        }
+        if(!contactFromEditPage.getWorkPhone().equals("")){
+            mobilePhone = "W: " + contactFromEditPage.getWorkPhone();
+        }
+
+        return Arrays.asList(homePhone, mobilePhone, workPhone)
+                .stream().filter((s) -> !s.equals(""))
+                .collect(Collectors.joining("\n"));
+    }
+
+    public static String cleaned(String string){
+        return string.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
 }
