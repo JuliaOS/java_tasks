@@ -32,34 +32,27 @@ public class ContactPersonalDataTest extends TestBase {
         Contacts contacts = app.contact().all();
         ContactData contactFromMainPage = contacts.iterator().next();
         ContactData contactFromPersonalInfo = app.contact().contactFromPersonalInfoPage(contactFromMainPage);
-        contactFromMainPage.withAllPhones(newSmth(contactFromMainPage));
-        //assertThat(mergePersonalInfo(contactFromMainPage), equalTo(cleanedData(contactFromPersonalInfo.getPersonalInfo())));
-        assertThat(mergePersonalInfo(contactFromMainPage), equalTo(contactFromPersonalInfo.getPersonalInfo().replaceAll("\n\n", "\n")));
+        assertThat(mergePersonalInfo(contactFromMainPage), equalTo(cleanedPersonalInfo(contactFromPersonalInfo.getPersonalInfo())));
     }
 
     private String mergePersonalInfo(ContactData contact) {
         String fullname = Arrays.asList(contact.getFirstName(), contact.getLastName())
                 .stream().filter((s) -> !s.equals(""))
                 .collect(Collectors.joining(" "));
+        String convertedPhones = convertPhonesFor(contact);
         return Arrays.asList(fullname,
                 contact.getAddress(),
-                contact.getAllPhones(), contact.getAllEmails())
+                convertedPhones, contact.getAllEmails())
                 .stream().filter((s) -> !s.equals(""))
                 .collect(Collectors.joining("\n"));
     }
 
-    public String cleanedData(String data){
-        return data.replaceAll("[-()]", "")
-                .replaceAll("H: ","").replaceAll("M: ", "").replaceAll("W: ", "")
-                .replaceAll(" ", "").replaceAll("\n\n", "\n");
-    }
-
-    public String newSmth(ContactData contact){
+    public String convertPhonesFor(ContactData contact){
         app.goTo().homePage();
         ContactData contactFromEditPage = app.contact().contactFromEditPage(contact);
         String allPhones = Arrays.asList(contactFromEditPage.getHomePhone(), contactFromEditPage.getMobilePhone(), contactFromEditPage.getWorkPhone())
                 .stream().filter((s) -> !s.equals(""))
-                .map(ContactPhoneTest::cleaned)
+                .map(ContactPersonalDataTest::cleanedPhones)
                 .collect(Collectors.joining("\n"));
         assertThat(allPhones, equalTo(contact.getAllPhones()));
         String homePhone = "";
@@ -80,8 +73,10 @@ public class ContactPersonalDataTest extends TestBase {
                 .collect(Collectors.joining("\n"));
     }
 
-    public static String cleaned(String string){
+    public static String cleanedPhones(String string){
         return string.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
-
+    public String cleanedPersonalInfo(String string){
+        return string.replaceAll("\n\n", "\n");
+    }
 }
