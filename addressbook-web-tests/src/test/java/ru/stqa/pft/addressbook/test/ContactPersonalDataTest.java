@@ -55,17 +55,17 @@ public class ContactPersonalDataTest extends TestBase {
                 .map(ContactPersonalDataTest::cleanedPhones)
                 .collect(Collectors.joining("\n"));
         assertThat(allPhones, equalTo(contact.getAllPhones()));
-        String homePhone = "";
-        String mobilePhone = "";
-        String workPhone = "";
-        if(!contactFromEditPage.getHomePhone().equals("")){
-            homePhone = "H: " + contactFromEditPage.getHomePhone();
+        String homePhone = contactFromEditPage.getHomePhone();
+        String mobilePhone = contactFromEditPage.getMobilePhone();
+        String workPhone = contactFromEditPage.getWorkPhone();
+        if(!homePhone.equals("")){
+            homePhone = "H: " + homePhone;
         }
-        if(!contactFromEditPage.getMobilePhone().equals("")){
-            mobilePhone = "M: " + contactFromEditPage.getMobilePhone();
+        if(!mobilePhone.equals("")){
+            mobilePhone = "M: " + mobilePhone;
         }
-        if(!contactFromEditPage.getWorkPhone().equals("")){
-            mobilePhone = "W: " + contactFromEditPage.getWorkPhone();
+        if(!workPhone.equals("")){
+            workPhone = "W: " + workPhone;
         }
 
         return Arrays.asList(homePhone, mobilePhone, workPhone)
