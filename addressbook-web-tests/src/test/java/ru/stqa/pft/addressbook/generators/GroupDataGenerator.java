@@ -40,21 +40,13 @@ public class GroupDataGenerator {
 
     private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
+        System.out.println();
         if(format.equals("csv")) {
             saveToCsv(groups, new File(file));
         } else if (format.equals("xml")){
             saveToXml(groups, new File(file));
         } else{
             System.out.println("Unrecognized format " + format);
-        }
-    }
-
-    private void saveToXml(List<GroupData> groups, File file) throws IOException {
-        XStream xstream = new XStream();
-        xstream.processAnnotations(GroupData.class);
-        String xml = xstream.toXML(groups);
-        try(FileWriter writer = new FileWriter(file)) {
-            writer.write(xml);
         }
     }
 
@@ -74,6 +66,15 @@ public class GroupDataGenerator {
             for (GroupData group : groups) {
                 writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
             }
+        }
+    }
+
+    private void saveToXml(List<GroupData> groups, File file) throws IOException {
+        XStream xstream = new XStream();
+        xstream.processAnnotations(GroupData.class);
+        String xml = xstream.toXML(groups);
+        try(FileWriter writer = new FileWriter(file)) {
+            writer.write(xml);
         }
     }
 }
