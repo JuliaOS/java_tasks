@@ -23,6 +23,7 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
+    private DbHelper dbHelper;
     private String browser;
     private Properties properties;
 
@@ -31,7 +32,7 @@ public class ApplicationManager {
     }
 
     public void init() throws IOException {
-
+        dbHelper = new DbHelper();
         if (browser.equals(BrowserType.FIREFOX)){
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)){
@@ -65,5 +66,9 @@ public class ApplicationManager {
 
     public NavigationHelper goTo() {
         return navigationHelper;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 }
