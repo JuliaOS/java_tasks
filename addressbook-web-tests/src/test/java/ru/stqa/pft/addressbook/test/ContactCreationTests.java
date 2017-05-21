@@ -38,12 +38,12 @@ public class ContactCreationTests extends TestBase{
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData newContact) {
         app.goTo().homePage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contact();
         app.goTo().addNewPage();
         app.contact().create(newContact);
         app.goTo().homePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contact();
         newContact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
         assertThat(after, equalTo(before.withAdded(newContact)));
     }
