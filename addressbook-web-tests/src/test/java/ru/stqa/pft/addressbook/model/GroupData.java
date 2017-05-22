@@ -26,6 +26,13 @@ public class GroupData {
     @Type(type = "text")
     private String footer;
 
+    public GroupData(){
+        id = 0;
+        name = "";
+        header = "";
+        footer = "";
+    }
+
     public String getName() {
         return name;
     }
@@ -67,6 +74,8 @@ public class GroupData {
         return "GroupData{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", header='" + header + '\'' +
+                ", footer='" + footer + '\'' +
                 '}';
     }
 
