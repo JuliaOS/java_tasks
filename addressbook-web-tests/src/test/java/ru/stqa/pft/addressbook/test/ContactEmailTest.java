@@ -15,21 +15,21 @@ public class ContactEmailTest extends TestBase {
     @BeforeMethod
     public void ensurePreconditins() {
         app.goTo().homePage();
-        if (app.contact().all().size() == 0) {
+        if (app.db().contact().size() == 0) {
             app.goTo().addNewPage();
             app.contact().create(new ContactData()
                     .withFirstName("FName1").withLastName("LName").withAddress("UserAddress").withMobilePhone("+79879999999")
                     .withWorkPhone("88314444444").withEmail1("fname@yandex.ru").withEmail3("fname@gmail.com"));
-            app.goTo().homePage();
         }
     }
 
     @Test
     public void testContactEmail() {
-        Contacts contacts = app.contact().all();
+        Contacts contacts = app.db().contact();
         ContactData contactFromMainPage = contacts.iterator().next();
         ContactData contactFromEditPage = app.contact().contactFromEditPage(contactFromMainPage);
-        assertThat(contactFromMainPage.getAllEmails(), equalTo(mergeEmails(contactFromEditPage)));
+        app.goTo().homePage();
+        assertThat(app.contact().getAllEmails(contactFromMainPage.getId()), equalTo(mergeEmails(contactFromEditPage)));
     }
 
     private String mergeEmails(ContactData contact) {

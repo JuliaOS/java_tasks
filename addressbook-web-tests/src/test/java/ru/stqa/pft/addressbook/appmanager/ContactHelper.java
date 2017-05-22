@@ -130,5 +130,13 @@ public class ContactHelper extends HelperBase{
         return new ContactData().withPersonalInfo(personalInfoString);
     }
 
+    public String getAllPhones(int id){
+        return wd.findElement(By.xpath(String.format("//input[@id='%s']/../../td[6]",id))).getText();
+    }
+
+    public String getAllEmails(int id){
+        return wd.findElement(By.xpath(String.format("//input[@id='%s']/../../td[5]",id))).getText();
+    }
+
 
 }

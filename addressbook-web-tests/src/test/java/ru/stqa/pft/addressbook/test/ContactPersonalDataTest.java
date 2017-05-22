@@ -18,18 +18,17 @@ public class ContactPersonalDataTest extends TestBase {
     @BeforeMethod
     public void ensurePreconditins() {
         app.goTo().homePage();
-        if (app.contact().all().size() == 0) {
+        if (app.db().contact().size() == 0) {
             app.goTo().addNewPage();
             app.contact().create(new ContactData()
                     .withFirstName("FName1").withLastName("LName").withAddress("UserAddress").withMobilePhone("+79879999999")
                     .withWorkPhone("88314444444").withEmail1("fname@yandex.ru").withEmail3("fname@gmail.com"));
-            app.goTo().homePage();
         }
     }
 
     @Test
     public void testPersonalInfo() {
-        Contacts contacts = app.contact().all();
+        Contacts contacts = app.db().contact();
         ContactData contactFromMainPage = contacts.iterator().next();
         ContactData contactFromPersonalInfo = app.contact().contactFromPersonalInfoPage(contactFromMainPage);
         assertThat(mergePersonalInfo(contactFromMainPage), equalTo(cleanedPersonalInfo(contactFromPersonalInfo.getPersonalInfo())));
@@ -42,7 +41,7 @@ public class ContactPersonalDataTest extends TestBase {
         String convertedPhones = convertPhonesFor(contact);
         return Arrays.asList(fullname,
                 contact.getAddress(),
-                convertedPhones, contact.getAllEmails())
+                convertedPhones, app.contact().getAllEmails(contact.getId()))
                 .stream().filter((s) -> !s.equals(""))
                 .collect(Collectors.joining("\n"));
     }
@@ -54,7 +53,8 @@ public class ContactPersonalDataTest extends TestBase {
                 .stream().filter((s) -> !s.equals(""))
                 .map(ContactPersonalDataTest::cleanedPhones)
                 .collect(Collectors.joining("\n"));
-        assertThat(allPhones, equalTo(contact.getAllPhones()));
+        app.goTo().homePage();
+        assertThat(allPhones, equalTo(app.contact().getAllPhones(contact.getId())));
         String homePhone = contactFromEditPage.getHomePhone();
         String mobilePhone = contactFromEditPage.getMobilePhone();
         String workPhone = contactFromEditPage.getWorkPhone();
