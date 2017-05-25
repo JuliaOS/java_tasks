@@ -5,19 +5,5 @@
     "address": "address0",
     "homePhone": "home_phone0",
     "email1": "e-mail1 0"
-  },
-  {
-    "firstName": "fname1",
-    "lastName": "lname1",
-    "address": "address1",
-    "homePhone": "home_phone1",
-    "email1": "e-mail1 1"
-  },
-  {
-    "firstName": "fname2",
-    "lastName": "lname2",
-    "address": "address2",
-    "homePhone": "home_phone2",
-    "email1": "e-mail1 2"
   }
 ]

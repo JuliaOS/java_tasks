@@ -213,6 +213,7 @@ public class ContactData {
                 ", allEmails='" + allEmails + '\'' +
                 ", allPhones='" + allPhones + '\'' +
                 ", personalInfo='" + personalInfo + '\'' +
+                ", groups=" + groups +
                 '}';
     }
 
@@ -235,7 +236,8 @@ public class ContactData {
         if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
         if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
         if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
-        return personalInfo != null ? personalInfo.equals(that.personalInfo) : that.personalInfo == null;
+        if (personalInfo != null ? !personalInfo.equals(that.personalInfo) : that.personalInfo != null) return false;
+        return groups != null ? groups.equals(that.groups) : that.groups == null;
     }
 
     @Override
@@ -253,7 +255,7 @@ public class ContactData {
         result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
         result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
         result = 31 * result + (personalInfo != null ? personalInfo.hashCode() : 0);
+        result = 31 * result + (groups != null ? groups.hashCode() : 0);
         return result;
     }
-
 }
