@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.test;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,6 +25,7 @@ public class ContactCreationTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditins(){
         if( app.db().group().size() == 0 ){
+            app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1"));
         }
     }
@@ -57,6 +59,7 @@ public class ContactCreationTests extends TestBase{
         Contacts after = app.db().contact();
         newContact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
         assertThat(after, equalTo(before.withAdded(newContact)));
+        Assert.assertTrue(after.contains(newContact));
         verifyContactsListInUI();
     }
 
