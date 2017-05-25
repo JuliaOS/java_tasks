@@ -56,8 +56,8 @@
       <file leaf-file-name="ContactDeletionFromGroupTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/test/ContactDeletionFromGroupTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="71" column="10" lean-forward="false" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
+            <state relative-caret-position="522">
+              <caret line="66" column="8" lean-forward="false" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1036,21 +1036,6 @@
     <history-entry file="ContactCreationTests - 2017.05.25 at 20h 47m 48s.xml">
       <configuration name="ContactCreationTests" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 33m 49s.xml">
-      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 34m 39s.xml">
-      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 40m 04s.xml">
-      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 40m 20s.xml">
-      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 41m 54s.xml">
-      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 47m 20s.xml">
       <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
     </history-entry>
@@ -1058,6 +1043,21 @@
       <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
     </history-entry>
     <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 48m 42s.xml">
+      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 49m 31s.xml">
+      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 50m 45s.xml">
+      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 51m 10s.xml">
+      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 53m 28s.xml">
+      <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactDeletionFromGroupTest - 2017.05.25 at 20h 53m 44s.xml">
       <configuration name="ContactDeletionFromGroupTest" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -1110,7 +1110,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="35" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/test/ContactDeletionFromGroupTest.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/test/ContactDeletionFromGroupTest.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1575,8 +1589,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/test/ContactDeletionFromGroupTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="71" column="10" lean-forward="false" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
+        <state relative-caret-position="522">
+          <caret line="66" column="8" lean-forward="false" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

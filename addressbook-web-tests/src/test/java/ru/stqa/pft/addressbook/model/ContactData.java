@@ -70,6 +70,23 @@ public class ContactData {
         personalInfo = "";
     }
 
+    public ContactData(ContactData contact) {
+        id = contact.getId();
+        firstName = contact.getFirstName();
+        lastName = contact.getLastName();
+        address = contact.getAddress();
+        homePhone = contact.getHomePhone();
+        mobilePhone = contact.getMobilePhone();
+        workPhone = contact.getWorkPhone();
+        email1 = contact.getEmail1();
+        email2 = contact.getEmail2();
+        email3 = contact.getEmail3();
+        allEmails = contact.getAllEmails();
+        allPhones = contact.getAllPhones();
+        personalInfo = contact.getPersonalInfo();
+        groups = contact.getGroups();
+    }
+
     public int getId() {
         return id;
     }
@@ -193,6 +210,11 @@ public class ContactData {
 
     public ContactData inGroup (GroupData group) {
         groups.add(group);
+        return this;
+    }
+
+    public ContactData outOfGroup (GroupData group) {
+        groups.remove(group);
         return this;
     }
 
