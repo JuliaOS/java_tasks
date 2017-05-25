@@ -70,4 +70,21 @@ public class TestBase {
         }
     }
 
+    public void verifyContactsInGroupListInUI(GroupData group) {
+        if(Boolean.getBoolean("verifyUI")) {
+            Contacts dbContacts = app.db().contact();
+            Contacts groupContacts = new Contacts();
+            for(ContactData contact : dbContacts){
+                if(contact.getGroups().contains(group)){
+                    groupContacts.add(contact);
+                }
+            }
+            Contacts uiContacts = app.contact().all();
+            assertThat(uiContacts.stream().map((f) -> new ContactData().withId(f.getId()).withFirstName(f.getFirstName()).withLastName(f.getLastName())
+                            .withAddress(f.getAddress())).collect(Collectors.toSet()),
+                    equalTo(groupContacts.stream().map((g) -> new ContactData().withId(g.getId()).withFirstName(g.getFirstName()).withLastName(g.getLastName())
+                            .withAddress(g.getAddress())).collect(Collectors.toSet())));
+        }
+    }
+
 }
