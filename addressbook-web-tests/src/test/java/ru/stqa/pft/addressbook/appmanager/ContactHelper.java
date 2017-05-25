@@ -1,7 +1,9 @@
 package ru.stqa.pft.addressbook.appmanager;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import java.util.List;
@@ -16,7 +18,7 @@ public class ContactHelper extends HelperBase{
         super(wd);
     }
 
-    public void fillNewContactForm(ContactData contactData) {
+    public void fillNewContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"),contactData.getFirstName());
         type(By.name("lastname"),contactData.getLastName());
         type(By.name("address"),contactData.getAddress());
@@ -26,6 +28,15 @@ public class ContactHelper extends HelperBase{
         type(By.name("email"),contactData.getEmail1());
         type(By.name("email2"),contactData.getEmail2());
         type(By.name("email3"),contactData.getEmail3());
+        if(creation){
+            if(contactData.getGroups().size() > 0){
+                Assert.assertTrue(contactData.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            }
+            else{
+                Assert.assertFalse(isElementPresent(By.name("new_group")));
+            }
+        }
     }
 
     public void submitContactCreation() {
@@ -58,7 +69,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void create(ContactData contactData) {
-        fillNewContactForm(contactData);
+        fillNewContactForm(contactData, true);
         contactCache = null;
         submitContactCreation();
     }
@@ -66,7 +77,7 @@ public class ContactHelper extends HelperBase{
     public void modify(ContactData contact) {
         selectContactById(contact.getId());
         initContactModification(contact.getId());
-        fillNewContactForm(contact);
+        fillNewContactForm(contact, false);
         submitContactModification();
         contactCache = null;
         returnToHomePage();
