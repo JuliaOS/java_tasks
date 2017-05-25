@@ -36,7 +36,6 @@ public class ContactDeletionFromGroupTest extends TestBase{
             app.goTo().addNewPage();
             app.contact().create(new ContactData().withFirstName("fname1").withLastName("lname1"));
         }
-
     }
 
     @Test
@@ -64,11 +63,9 @@ public class ContactDeletionFromGroupTest extends TestBase{
         app.contact().removeContactFromGroup(removedContact, groupForDeletion);
 
         removedContact.outOfGroup(groupForDeletion);
-        //app.goTo().homePage();
+        app.goTo().homePage();
         Contacts after = app.db().contact();
-        //Assert.assertTrue(after.contains(contactForDeletion));
-        Contacts test = before.without(contactForDeletion).withAdded(removedContact);
-        assertThat(after, equalTo(test));
+        assertThat(after, equalTo(before.without(contactForDeletion).withAdded(removedContact)));
         //verifyContactsInGroupListInUI(groupForDeletion);
     }
 
