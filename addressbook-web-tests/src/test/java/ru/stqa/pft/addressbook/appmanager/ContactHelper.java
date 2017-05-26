@@ -37,9 +37,6 @@ public class ContactHelper extends HelperBase{
                 new Select(wd.findElement(By.name("new_group"))).selectByValue(Integer.toString(contactData.getGroups().iterator().next().getId()));
 
             }
-            else{
-                Assert.assertFalse(isElementPresent(By.name("new_group")));
-            }
         }
     }
 

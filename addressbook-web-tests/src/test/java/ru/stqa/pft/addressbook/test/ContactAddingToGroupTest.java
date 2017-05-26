@@ -36,6 +36,8 @@ public class ContactAddingToGroupTest extends TestBase{
        app.goTo().homePage();
        Contacts after = app.db().contact();
        assertThat(after, equalTo(before.without(contactBeforeAddition).withAdded(contactAfterAddition)));
+       //GroupData groupForDeletion = intersect(contactBeforeAddition.getGroups(), contactAfterAddition.getGroups()).iterator().next();
+       //app.goTo().groupViewPage(groupForDeletion);
        //verifyContactsInGroupListInUI(groupForDeletion);
    }
 
@@ -68,5 +70,15 @@ public class ContactAddingToGroupTest extends TestBase{
             addedContact.inGroup(groupForAdding);
             return addedContact;
         }
+
+    /*private Groups intersect (Groups groups1, Groups groups2){
+        Groups intersectSet = new Groups();
+        for (GroupData g : groups2) {
+            if (! groups1.contains(g)) {
+                intersectSet.add(g);
+            }
+        }
+        return intersectSet;
+   }*/
 
 }

@@ -2,6 +2,8 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 /**
  * Created by Julia on 4/16/2017.
@@ -39,4 +41,12 @@ public class NavigationHelper extends HelperBase{
         }
     }
 
+    public void groupViewPage(GroupData group) {
+        if (isElementPresent(By.id("maintable"))){
+            new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(group.getId()));
+        } else {
+            click(By.linkText("home"));
+            new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(group.getId()));
+        }
+    }
 }
