@@ -29,7 +29,7 @@ public class ContactAddingToGroupTest extends TestBase{
    }
 
    @Test
-   public void testContactAddingToGroup() {
+   public void testContactAdditionToGroup() {
        Contacts before = app.db().contact();
        ContactData contactBeforeAddition = before.iterator().next();
        ContactData contactAfterAddition = addToGroup(contactBeforeAddition);
@@ -49,10 +49,11 @@ public class ContactAddingToGroupTest extends TestBase{
         } else {
             if (addedContact.getGroups().size() == groups.size()) {
                 app.goTo().groupPage();
-                app.group().create(new GroupData().withName("test1"));
                 groupForAdding = new GroupData().withName("addedGroup").withHeader("header").withFooter("footer");
+                app.group().create(groupForAdding);
                 Groups groupsUpdated = app.db().group();
                 groupForAdding.withId(groupsUpdated.stream().mapToInt((g) -> g.getId()).max().getAsInt());
+                app.goTo().homePage();
             } else {
                 Groups intersectSet = new Groups();
                 for (GroupData g : groups) {
