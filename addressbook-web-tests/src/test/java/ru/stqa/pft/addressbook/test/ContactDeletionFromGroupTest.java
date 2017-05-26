@@ -38,13 +38,12 @@ public class ContactDeletionFromGroupTest extends TestBase{
         //verifyContactsInGroupListInUI(groupForDeletion);
     }
 
-    public ContactData removeFromGroup(ContactData contact){
+    private ContactData removeFromGroup(ContactData contact){
         ContactData removedContact = new ContactData(contact);
-        Groups groups = app.db().group();
         GroupData groupForDeletion;
 
         if(removedContact.getGroups().size() == 0){
-            groupForDeletion = groups.iterator().next();
+            groupForDeletion = app.db().group().iterator().next();
             app.contact().addContactToGroup(removedContact, groupForDeletion);
             removedContact.inGroup(groupForDeletion);
             app.goTo().homePage();
@@ -57,5 +56,4 @@ public class ContactDeletionFromGroupTest extends TestBase{
         removedContact.outOfGroup(groupForDeletion);
         return removedContact;
     }
-
 }
