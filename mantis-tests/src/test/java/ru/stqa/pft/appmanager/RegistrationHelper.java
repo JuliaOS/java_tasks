@@ -1,20 +1,25 @@
 package ru.stqa.pft.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Julia on 5/28/2017.
  */
-public class RegistrationHelper {
-    private ApplicationManager app;
-    private WebDriver wd;
+public class RegistrationHelper extends HelperBase{
 
     public RegistrationHelper(ApplicationManager app) {
-        this.app = app;
-        this.wd = app.getDriver();
+        super(app);
     }
 
     public void start(String username, String email) {
         wd.get(app.getProperty("web.BaseUrl") + "/signup_page.php");
+        type(By.name("username"), username);
+        type(By.name("email"), email);
+        click(By.xpath("//input[@value='Signup']"));
+    }
+
+    public void finish(String confirmationLink, String password) {
+        wd.get(confirmationLink);
     }
 }
