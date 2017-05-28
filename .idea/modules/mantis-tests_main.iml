@@ -16,6 +16,7 @@
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.2.2" level="project" />
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.39" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.10.Final" level="project" />
+    <orderEntry type="library" name="Gradle: commons-net:commons-net:3.6" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:2.53.1" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-edge-driver:2.53.1" level="project" />
