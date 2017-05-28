@@ -9,7 +9,7 @@ public class RegistrationTests extends TestBase {
 
     @Test
 
-    public void testRegistartion(){
+    public void testRegistration(){
         app.registration().start("user1","user1@localhost.localdomain");
     }
 }

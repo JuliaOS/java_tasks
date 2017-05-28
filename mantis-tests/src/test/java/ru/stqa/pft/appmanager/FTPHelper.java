@@ -13,7 +13,7 @@ public class FTPHelper {
     ApplicationManager app;
     private FTPClient ftp;
 
-    public FTPHelper(ApplicationManager applicationManager) {
+    public FTPHelper(ApplicationManager app) {
         this.app = app;
         this.ftp = new FTPClient();
     }
@@ -28,7 +28,7 @@ public class FTPHelper {
         ftp.disconnect();
     }
 
-    public void restore(File file, String target, String backup) throws IOException {
+    public void restore(String target, String backup) throws IOException {
         ftp.connect(app.getProperty("ftp.host"));
         ftp.login(app.getProperty("ftp.login"), app.getProperty("ftp.password"));
         ftp.deleteFile(target);
