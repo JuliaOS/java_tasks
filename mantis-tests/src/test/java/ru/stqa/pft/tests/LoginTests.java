@@ -1,6 +1,5 @@
 package ru.stqa.pft.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.appmanager.HttpSession;
 

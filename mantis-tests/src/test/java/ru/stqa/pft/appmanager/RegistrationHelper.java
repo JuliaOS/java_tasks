@@ -1,7 +1,6 @@
 package ru.stqa.pft.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Julia on 5/28/2017.

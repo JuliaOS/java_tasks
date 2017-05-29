@@ -23,6 +23,8 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private FTPHelper ftpHelper;
     private MailHelper mailHelper;
+    private PasswordChangeHelper passwordChangeHelper;
+
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -69,6 +71,13 @@ public class ApplicationManager {
         return mailHelper;
     }
 
+    public PasswordChangeHelper changePassword(){
+        if(passwordChangeHelper == null) {
+            passwordChangeHelper = new PasswordChangeHelper(this);
+        }
+        return passwordChangeHelper;
+    }
+
     public WebDriver getDriver() {
         if(wd == null){
             if (browser.equals(BrowserType.FIREFOX)){
@@ -77,9 +86,11 @@ public class ApplicationManager {
                 wd = new ChromeDriver();
             } else if (browser.equals(BrowserType.IE)){
                 wd = new InternetExplorerDriver();
+
             }
         wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        wd.get(properties.getProperty("web.BaseUrl"));
+            String property = properties.getProperty("web.BaseUrl");
+            wd.get(properties.getProperty("web.BaseUrl"));
         }
         return wd;
     }

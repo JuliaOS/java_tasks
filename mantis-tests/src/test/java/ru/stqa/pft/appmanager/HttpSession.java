@@ -54,4 +54,6 @@ public class HttpSession {
         String body = getTextFrom(response);
         return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
     }
+
+
 }
