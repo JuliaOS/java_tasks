@@ -24,6 +24,7 @@ public class ApplicationManager {
     private FTPHelper ftpHelper;
     private MailHelper mailHelper;
     private PasswordChangeHelper passwordChangeHelper;
+    private DbHelper db;
 
 
     public ApplicationManager(String browser) {
@@ -76,6 +77,13 @@ public class ApplicationManager {
             passwordChangeHelper = new PasswordChangeHelper(this);
         }
         return passwordChangeHelper;
+    }
+
+    public DbHelper db(){
+        if(db == null) {
+            db = new DbHelper();
+        }
+        return db;
     }
 
     public WebDriver getDriver() {

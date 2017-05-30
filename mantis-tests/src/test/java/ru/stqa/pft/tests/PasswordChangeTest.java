@@ -27,6 +27,7 @@ public class PasswordChangeTest extends TestBase{
 
         String  newPassword = "password1";
         String username = "user1496153992967";
+        app.db().user();
         app.changePassword().start(username);
         List<MailMessage> mailMessages = app.email().waitForMail(1, 20000);
         String confirmationLink = app.changePassword().findConfirmationLink(mailMessages, "user1496153992967@localhost.localdomain");
