@@ -3,7 +3,6 @@ package ru.stqa.pft.tests;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.appmanager.HttpSession;
 import ru.stqa.pft.model.MailMessage;
 
@@ -31,17 +30,11 @@ public class RegistrationTests extends TestBase {
         String email = String.format("user%s@localhost.localdomain", now);
         app.registration().start(username, email);
         List<MailMessage> mailMessages = app.email().waitForMail(2, 10000);
-        String confirmationLink = findConfirmationLink(mailMessages, email);
+        String confirmationLink = app.registration().findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);
         HttpSession session = app.newSession();
         assertTrue(session.login(username, password));
         assertTrue(session.isLoggedInAs(username));
-    }
-
-    private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
-        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-        return regex.getText(mailMessage.text);
     }
 
 
