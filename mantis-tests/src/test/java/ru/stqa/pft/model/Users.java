@@ -14,11 +14,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "mantis_user_table")
 public class Users {
-
+    @Id
+    @Column(name = "id")
+    int id;
     @Column(name = "username")
     private String username;
     @Column(name = "email")
     private String email;
+
+    public Users() {
+        this.id = 0;
+        this.username = "";
+        this.email = "";
+    }
+
+    public Users(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
 
 
     public Users withEmail(String email) {

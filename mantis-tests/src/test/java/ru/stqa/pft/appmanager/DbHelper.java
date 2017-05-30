@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 import ru.stqa.pft.model.Users;
 
 import java.util.ArrayList;
@@ -33,4 +34,5 @@ public class DbHelper {
         session.close();
         return new ArrayList<Users>(result);
     }
+
 }

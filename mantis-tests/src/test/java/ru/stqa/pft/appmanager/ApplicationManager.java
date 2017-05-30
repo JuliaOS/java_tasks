@@ -65,7 +65,7 @@ public class ApplicationManager {
         return ftpHelper;
     }
 
-    public MailHelper email() {
+   public MailHelper email() {
         if(mailHelper == null) {
             mailHelper = new MailHelper(this);
         }
