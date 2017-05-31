@@ -23,17 +23,7 @@ public class PasswordChangeTest extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){
         app.email().start();
-        if(app.db().user().size() == 1){
-            long now = System.currentTimeMillis();
-            String password = "password";
-            Users user = new Users(String.format("user%s", now), String.format("user%s@localhost.localdomain", now));
-            app.registration().start(user.getUsername(), user.getEmail());
-            List<MailMessage> mailMessages = app.email().waitForMail(2, 10000);
-            String confirmationLink = app.registration().findConfirmationLink(mailMessages, user.getEmail());
-            app.registration().finish(confirmationLink, password);
-            app.email().stop();
-            app.email().startOnNewPort();
-        }
+        assertTrue("No available users in the database", app.db().user().size() > 1);
     }
 
     @Test

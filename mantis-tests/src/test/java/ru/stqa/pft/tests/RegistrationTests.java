@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.appmanager.HttpSession;
 import ru.stqa.pft.model.MailMessage;
+import ru.stqa.pft.model.Users;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,16 +26,15 @@ public class RegistrationTests extends TestBase {
 
     public void testRegistration() throws IOException {
         long now = System.currentTimeMillis();
-        String username = String.format("user%s", now);
         String password = "password";
-        String email = String.format("user%s@localhost.localdomain", now);
-        app.registration().start(username, email);
+        Users user = new Users(String.format("user%s", now), String.format("user%s@localhost.localdomain", now));
+        app.registration().start(user.getUsername(), user.getEmail());
         List<MailMessage> mailMessages = app.email().waitForMail(2, 10000);
-        String confirmationLink = app.registration().findConfirmationLink(mailMessages, email);
+        String confirmationLink = app.registration().findConfirmationLink(mailMessages, user.getEmail());
         app.registration().finish(confirmationLink, password);
         HttpSession session = app.newSession();
-        assertTrue(session.login(username, password));
-        assertTrue(session.isLoggedInAs(username));
+        assertTrue(session.login(user.getUsername(), password));
+        assertTrue(session.isLoggedInAs(user.getUsername()));
     }
 
 

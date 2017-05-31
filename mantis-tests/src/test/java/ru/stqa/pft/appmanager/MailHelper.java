@@ -28,7 +28,6 @@ public class MailHelper {
     public List<MailMessage> waitForMail(int count, long timeout){
         long start = System.currentTimeMillis();
         while(System.currentTimeMillis() < start + timeout){
-            System.out.println(wiser.getServer().getPort());
             if(wiser.getMessages().size() >= count){
                 return wiser.getMessages().stream().map((g)-> toModeMail(g)).collect(Collectors.toList());
             }
@@ -62,11 +61,6 @@ public class MailHelper {
 
     public void stop(){
         wiser.stop();
-    }
-
-    public void startOnNewPort(){
-        wiser = new Wiser(587);
-        wiser.start();
     }
 
 }
