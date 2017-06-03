@@ -25,6 +25,7 @@ public class ApplicationManager {
     private DbHelper dbHelper;
     private String browser;
     private Properties properties;
+    private RestHelper restHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -69,5 +70,13 @@ public class ApplicationManager {
 
     public DbHelper db() {
         return dbHelper;
+    }
+
+    public RestHelper rest(){
+        if(restHelper == null){
+            restHelper = new RestHelper(this);
+        }
+        return restHelper;
+
     }
 }

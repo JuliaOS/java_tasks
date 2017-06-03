@@ -15,6 +15,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +27,9 @@ import static org.hamcrest.junit.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase{
 
     @BeforeMethod
-    public void ensurePreconditins(){
+    public void ensurePreconditins() throws IOException {
+        int issueId = 9;
+        skipIfNotFixed(issueId);
         if( app.db().group().size() == 0 ){
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1"));

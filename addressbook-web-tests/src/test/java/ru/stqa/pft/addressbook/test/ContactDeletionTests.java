@@ -5,12 +5,16 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.IOException;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
 
 public class ContactDeletionTests extends TestBase{
     @BeforeMethod
-    public void ensurePreconditins(){
+    public void ensurePreconditins() throws IOException {
+        int issueId = 9;
+        skipIfNotFixed(issueId);
         app.goTo().homePage();
         if( app.db().contact().size() == 0 ){
             app.goTo().addNewPage();
