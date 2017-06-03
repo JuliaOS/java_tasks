@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    compile 'org.testng:testng:6.11'
+    compile 'com.solidfire.code.gson:gson:2.6.2'
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile 'org.apache.httpcomponents:fluent-hc:4.5.2'
+}
+
+
+
