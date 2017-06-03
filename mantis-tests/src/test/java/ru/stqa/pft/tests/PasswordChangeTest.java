@@ -7,7 +7,11 @@ import ru.stqa.pft.appmanager.HttpSession;
 import ru.stqa.pft.model.MailMessage;
 import ru.stqa.pft.model.Users;
 
+import javax.xml.rpc.ServiceException;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -21,7 +25,9 @@ import static ru.stqa.pft.tests.TestBase.app;
 public class PasswordChangeTest extends TestBase{
 
     @BeforeMethod
-    public void ensurePreconditions(){
+    public void ensurePreconditions() throws RemoteException, ServiceException, MalformedURLException {
+        int issueId = 1;
+        skipIfNotFixed(issueId);
         app.email().start();
         assertTrue("No available users in the database", app.db().user().size() > 1);
     }

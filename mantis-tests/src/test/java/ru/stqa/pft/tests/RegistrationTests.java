@@ -7,7 +7,10 @@ import ru.stqa.pft.appmanager.HttpSession;
 import ru.stqa.pft.model.MailMessage;
 import ru.stqa.pft.model.Users;
 
+import javax.xml.rpc.ServiceException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
@@ -18,7 +21,9 @@ import static org.junit.Assert.assertTrue;
 public class RegistrationTests extends TestBase {
 
     @BeforeMethod
-    public void startMailServer(){
+    public void startMailServer() throws RemoteException, ServiceException, MalformedURLException {
+        int issueId = 1;
+        skipIfNotFixed(issueId);
         app.email().start();
     }
 
