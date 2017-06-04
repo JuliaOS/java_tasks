@@ -21,14 +21,14 @@ public class RestHelper {
     }
 
 
-    public boolean issueStatus(int issueId) throws IOException {
+    public boolean isStatusOpen(int issueId) throws IOException {
         String json = getExecutor().execute(Request.Get(String.format("http://demo.bugify.com/api/issues/%s.json",issueId )))
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonObject jobject = parsed.getAsJsonObject();
         JsonArray jarray = jobject.getAsJsonArray("issues");
         jobject = jarray.get(0).getAsJsonObject();
-        String result = jobject.get("state_name").toString();
+        String result = jobject.get("state_name").toString().replaceAll("\"", "");
         if(result.equals("Closed")){
             return false;
         }else{

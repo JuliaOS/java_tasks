@@ -55,8 +55,7 @@ public class RestTests {
         JsonObject jobject = parsed.getAsJsonObject();
         JsonArray jarray = jobject.getAsJsonArray("issues");
         jobject = jarray.get(0).getAsJsonObject();
-        String result = jobject.get("state_name").toString();
-        boolean closed = result.equals("Closed");
+        String result = jobject.get("state_name").toString().replaceAll("\"", "");
         return result.equals("Closed");
     }
 }

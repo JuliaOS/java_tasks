@@ -17,8 +17,6 @@ import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.rmi.RemoteException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -99,7 +97,7 @@ public class TestBase {
     }
 
     private boolean isIssueOpen(int issueId) throws IOException, ServiceException {
-        return app.rest().issueStatus(issueId);
+        return app.rest().isStatusOpen(issueId);
     }
 
 }

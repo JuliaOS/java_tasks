@@ -41,7 +41,7 @@ public class TestBase {
     }
 
     private boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-        return app.soap().issueStatus(issueId);
+        return app.soap().isStatusOpen(issueId);
     }
 
     @AfterSuite (alwaysRun = true)
