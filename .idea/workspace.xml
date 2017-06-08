@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f9c9899-c9ca-4ca4-966f-0e383eb3d7fe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Task1/sandbox/src/test/java/t1/PrimeTests.java" afterPath="$PROJECT_DIR$/Task1/sandbox/src/test/java/t1/PrimeTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Task1/sandbox/src/test/java/t1/SquareTests.java" afterPath="$PROJECT_DIR$/Task1/sandbox/src/test/java/t1/SquareTests.java" />
-    </list>
+    <list default="true" id="3f9c9899-c9ca-4ca4-966f-0e383eb3d7fe" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/Task2/.gradle/" />
     <ignored path="$PROJECT_DIR$/Task2/build/" />
     <ignored path="$PROJECT_DIR$/Task1/sandbox/.gradle/" />
